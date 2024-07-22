@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Registro de Cliente</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}" />
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background-color: hsl(210, 100%, 6%);
+                color: hsl(180, 100%, 90%);
+            }
+            .card {
+                background-color: hsl(210, 100%, 12%);
+                color: hsl(180, 100%, 90%);
+            }
+            input::placeholder {
+                color: hsl(180, 100%, 90%);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card p-6 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-4">Registro de cliente</h2>
+            <p class="mb-4">Completa el formulario para crear tu cuenta.</p>
+            <form id="registration-form" th:action="@{/registro}" method="post" class="space-y-4">
+                <div class="grid gap-2">
+                    <label for="name" class="block text-sm font-medium">Nombre</label>
+                    <input id="name" name="nombre" type="text" placeholder="Ingresa tu nombre" required="required" class="mt-1 block w-full px-3 py-2 bg-input border border-border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm text-primary-foreground placeholder-secondary-foreground" />
+                </div>
+                <div class="grid gap-2">
+                    <label for="email" class="block text-sm font-medium">Correo electrónico</label>
+                    <input id="email" name="email" type="email" placeholder="Ingresa tu correo electrónico" required="required" class="mt-1 block w-full px-3 py-2 bg-input border border-border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm text-primary-foreground placeholder-secondary-foreground" />
+                </div>
+                <div class="grid gap-2">
+                    <label for="password" class="block text-sm font-medium">Contraseña</label>
+                    <input id="password" name="password" type="password" placeholder="Ingresa tu contraseña" required="required" class="mt-1 block w-full px-3 py-2 bg-input border border-border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm text-primary-foreground placeholder-secondary-foreground" />
+                </div>
+                <div class="grid gap-2">
+                    <label for="phone" class="block text-sm font-medium">Número de teléfono</label>
+                    <input id="phone" name="telefono" type="tel" placeholder="Ingresa tu número de teléfono" required="required" class="mt-1 block w-full px-3 py-2 bg-input border border-border rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm text-primary-foreground placeholder-secondary-foreground" />
+                </div>
+                <div>
+                    <button type="submit" class="w-full bg-primary text-primary-foreground py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">Registrarse</button>
+                </div>
+                <div id="form-messages"></div>
+            </form>
+        </div>
+        <script th:src="@{/js/scripts.js}"></script>
+    </body>
+</html>

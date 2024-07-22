@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Buscar Habitaciones</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}" />
+        <style>
+            body {
+                background-color: hsl(210, 100%, 6%);
+                color: hsl(180, 100%, 90%);
+                font-family: Arial, sans-serif;
+            }
+            .container {
+                width: 90%;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+            .header {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+            .form-container {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+            .form-group {
+                flex: 1 1 200px;
+                display: flex;
+                flex-direction: column;
+            }
+            .form-group label {
+                margin-bottom: 0.5rem;
+                font-weight: bold;
+            }
+            .form-group input,
+            .form-group select {
+                padding: 0.5rem;
+                border: 1px solid hsl(210, 50%, 40%);
+                border-radius: 0.25rem;
+                margin-bottom: 1rem;
+                color: black; /* Asegura que el texto dentro de las entradas sea negro */
+            }
+            .form-group input::placeholder {
+                color: black; /* Color del texto placeholder */
+            }
+            .btn {
+                background-color: hsl(200, 100%, 28%);
+                color: hsl(180, 100%, 90%);
+                padding: 0.5rem 1rem;
+                border: none;
+                border-radius: 0.25rem;
+                cursor: pointer;
+                text-align: center;
+                flex: 1 1 100px;
+                align-self: flex-end;
+            }
+            .btn:hover {
+                background-color: hsl(200, 100%, 35%);
+            }
+            .filters {
+                margin-bottom: 2rem;
+            }
+            .filters h3 {
+                font-size: 1.25rem;
+                font-weight: bold;
+            }
+            .filters label {
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+            .rooms {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 1rem;
+            }
+            .room-card {
+                background-color: hsl(210, 100%, 12%);
+                padding: 1rem;
+                border-radius: 0.5rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .room-card img {
+                border-radius: 0.5rem;
+                width: 100%;
+                max-width: 300px;
+                height: 200px;
+                object-fit: cover;
+                margin-bottom: 1rem;
+            }
+            .room-info {
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            .room-info h3 {
+                font-size: 1.25rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+            }
+            .room-info p {
+                font-size: 0.875rem;
+                margin-bottom: 0.5rem;
+            }
+            .room-info .price {
+                font-size: 1.25rem;
+                font-weight: bold;
+            }
+            .view-details {
+                background-color: hsl(200, 100%, 28%);
+                color: hsl(180, 100%, 90%);
+                padding: 0.5rem 1rem;
+                border: none;
+                border-radius: 0.25rem;
+                cursor: pointer;
+                text-align: center;
+            }
+            .view-details:hover {
+                background-color: hsl(200, 100%, 35%);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Buscar Habitaciones</h1>
+            </div>
+            <form id="search-form" th:action="@{/habitaciones}" method="get" class="form-container">
+                <div class="form-group">
+                    <label for="search">Buscar</label>
+                    <input id="search" name="search" type="text" placeholder="Buscar por nombre o servicios..." />
+                </div>
+                <div class="form-group">
+                    <label for="check-in">Fecha de entrada</label>
+                    <input id="check-in" name="check-in" type="date" />
+                </div>
+                <div class="form-group">
+                    <label for="check-out">Fecha de salida</label>
+                    <input id="check-out" name="check-out" type="date" />
+                </div>
+                <div class="form-group">
+                    <label for="guests">Número de huéspedes</label>
+                    <select id="guests" name="guests">
+                        <option value="1">1 huésped</option>
+                        <option value="2">2 huéspedes</option>
+                        <option value="3">3 huéspedes</option>
+                        <option value="4">4 huéspedes</option>
+                        <option value="5">5 o más huéspedes</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Buscar</button>
+            </form>
+            <div class="filters">
+                <h3>Filtros</h3>
+                <label>
+                    <input type="checkbox" name="amenities" value="Free WiFi"> WiFi Gratis
+                </label>
+                <label>
+                    <input type="checkbox" name="amenities" value="Breakfast"> Desayuno
+                </label>
+                <label>
+                    <input type="checkbox" name="amenities" value="Pool"> Piscina
+                </label>
+                <label>
+                    <input type="checkbox" name="amenities" value="Gym"> Gimnasio
+                </label>
+                <label>
+                    <input type="checkbox" name="amenities" value="Balcony"> Balcón
+                </label>
+                <label>
+                    <input type="checkbox" name="amenities" value="Kitchenette"> Cocina pequeña
+                </label>
+            </div>
+            <div class="rooms">
+                <h3 class="text-xl font-bold">Habitaciones disponibles</h3>
+                <ul class="space-y-4" th:each="habitacion : ${habitaciones}">
+                    <li class="room-card">
+                        <img th:src="@{/images/} + ${habitacion.imagen}" alt="Habitación" />
+                        <div class="room-info">
+                            <h3 th:text="${habitacion.nombre}"></h3>
+                            <p th:text="${habitacion.servicios}"></p>
+                            <div class="price" th:text="${habitacion.precio} + ' USD'"></div>
+                        </div>
+                        <button class="view-details">Ver Detalles</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

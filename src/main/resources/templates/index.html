@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Hotel Villa Del Mar</title>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
+    </head>
+    <body class="bg-background text-foreground">
+        <!-- Header -->
+        <header class="bg-card shadow">
+            <div class="container mx-auto flex justify-between items-center p-6">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-foreground">LOGO</a>
+                    <nav class="ml-6 space-x-4">
+                        <a href="/habitaciones" class="text-foreground">Buscar y Reservar</a>
+                        <a href="#" class="text-foreground">Ofertas especiales</a>
+                        <a href="#" class="text-foreground">Vacaciones</a>
+                        <a href="#" class="text-foreground">Cupones</a>
+                    </nav>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/registro" class="px-4 py-2 bg-primary text-primary-foreground rounded">Registrarse</a>
+                    <a href="/habitaciones" class="px-4 py-2 bg-secondary text-secondary-foreground rounded">Reserva Ahora</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Banner -->
+        <div class="relative bg-cover bg-center h-96" style="background-image: url('/images/playa_banner.jpg');">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="relative container mx-auto h-full flex items-center justify-center">
+
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="container mx-auto py-16">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-foreground">Encuentra</h2>
+                <div class="flex justify-center space-x-8 mt-4">
+                    <a href="#" class="text-foreground">Cuartos</a>
+                    <a href="#" class="text-foreground">Hoteles</a>
+                    <a href="#" class="text-foreground">Apartamentos</a>
+                    <a href="#" class="text-foreground">Villas</a>
+                </div>
+            </div>
+
+            <!-- Search Form -->
+            <div class="bg-card shadow-md rounded-lg p-8">
+                <form class="grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
+                    <div class="flex flex-col">
+                        <label for="location" class="mb-2 text-foreground">Locación</label>
+                        <input type="text" id="location" placeholder="¿Qué destino buscas?" class="px-4 py-2 border rounded text-black">
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="checkin" class="mb-2 text-foreground">Check In</label>
+                        <input type="date" id="checkin" class="px-4 py-2 border rounded text-black">
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="checkout" class="mb-2 text-foreground">Check Out</label>
+                        <input type="date" id="checkout" class="px-4 py-2 border rounded text-black">
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="guests" class="mb-2 text-foreground">Huéspedes</label>
+                        <input type="number" id="guests" placeholder="Agregar" class="px-4 py-2 border rounded text-black">
+                    </div>
+                    <div>
+                        <button type="submit" class="px-8 py-2 bg-primary text-primary-foreground rounded w-full">Buscar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
